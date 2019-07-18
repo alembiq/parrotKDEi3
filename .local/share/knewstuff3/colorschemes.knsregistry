@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="">
+  <name>McMojave Color</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>vinceliuice</author>
+  <homepage>https://store.kde.org/p/1305007</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>64</rating>
+  <downloads>2697</downloads>
+  <installedfile>/home/charles/.local/share/color-schemes//McMojave.colors</installedfile>
+  <installedfile>/home/charles/.local/share/color-schemes//McMojaveLight.colors</installedfile>
+  <installedfile>/home/charles/.local/share/color-schemes//</installedfile>
+  <id>1305007</id>
+  <releasedate>2019-06-19</releasedate>
+  <summary>McMojave kde is a MacOSX Mojave like theme for KDE Plasma desktop.&lt;br />
+-------------------------&lt;br />
+You can use this with:&lt;br />
+-------------------------&lt;br />
+&lt;strong>- Aurorae Themes&lt;/strong>:&lt;br />
+&lt;a href="https://www.pling.com/p/1305005/" target="_blank" rel="nofollow">https://www.pling.com/p/1305005/&lt;/a>&lt;br />
+&lt;strong>- Kvantum Themes&lt;/strong>:&lt;br />
+&lt;a href="https://www.pling.com/p/1304957/" target="_blank" rel="nofollow">https://www.pling.com/p/1304957/&lt;/a>&lt;br />
+&lt;strong>- Plasma Desktop Themes&lt;/strong>:&lt;br />
+&lt;a href="https://www.pling.com/p/1305006/" target="_blank" rel="nofollow">https://www.pling.com/p/1305006/&lt;/a>&lt;br />
+&lt;strong>- Plasma Look-and-Feel Settings&lt;/strong>:&lt;br />
+&lt;a href="https://www.pling.com/p/1304936/" target="_blank" rel="nofollow">https://www.pling.com/p/1304936/&lt;/a>&lt;br />
+-------------------------&lt;br />
+&lt;strong>- Icon theme: McMojave-circle&lt;/strong>&lt;br />
+&lt;a href="https://www.opendesktop.org/p/1305429" target="_blank" rel="nofollow">https://www.opendesktop.org/p/1305429&lt;/a></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/d/2/b/3/0cffc96cd6e5caf6ce8b4f66b7ea7290025c.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/d/2/b/3/0cffc96cd6e5caf6ce8b4f66b7ea7290025c.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1560931661/s/d560fc94c5db7e4928c67e71fffeb469/t/1561782793/o/1/McMojave.tar.xz</payload>
+  <tags>gplv3,linux,unix,theme,kde,plasma,colorscheme</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

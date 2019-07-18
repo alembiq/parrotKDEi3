@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="">
+  <name>LockSwitch</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>rpallai</author>
+  <homepage>https://store.kde.org/p/1267607</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>58</rating>
+  <downloads>457</downloads>
+  <installedfile>/tmp/dap.locksw-0.1.1.plasmoid</installedfile>
+  <id>1267607</id>
+  <releasedate>2019-01-18</releasedate>
+  <summary>Small switch to temporarily suspend automatic locking of the screen.&lt;br />
+&lt;br />
+The current color indicates the state of automatic screen lock:&lt;br />
+- Green: activated&lt;br />
+- Gray: inhibited by third party&lt;br />
+- Red: suspended by this switch</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/0/7/8/a/e89d9d27977a337f183fbacfd8f88df99fef.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/0/7/8/a/e89d9d27977a337f183fbacfd8f88df99fef.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1547823858/s/8475f2eca12f93958648d11b97f51b42/t/1561762692/o/1/dap.locksw-0.1.1.plasmoid</payload>
+  <tags>linux,unix,extension,kde,plasma,plasma##majorversion=5,widget,gplv2-later,original-product</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="">
+  <name>Network Monitor</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>clearmartin</author>
+  <homepage>https://store.kde.org/p/998914</homepage>
+  <licence></licence>
+  <version>1.7.2</version>
+  <rating>83</rating>
+  <downloads>46697</downloads>
+  <installedfile>/tmp/169377-package.zip</installedfile>
+  <id>998914</id>
+  <releasedate>2015-11-15</releasedate>
+  <summary>Plasmoid for plasma panel. Monitors network speed of currently active connections.&lt;br />
+&lt;br />
+REQUIRED DEPENDENCIES&lt;br />
+- qt5-graphicaleffects&lt;br />
+- e.g. package for kubuntu users: libqt5qml-graphicaleffects&lt;br />
+&lt;br />
+HOW TO INSTALL&lt;br />
+- Add Widgets... -&amp;gt; Get new widgets -&amp;gt;...</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img//hive/content-pre1/169377-1.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img//hive/content-pre1/169377-1.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1460732807/s/2faf0178e4210f8b46e8cd4305104959/t/1561762332/o/1/169377-package.zip</payload>
+  <tags>linux,unix,extension,plasma##majorversion=5,widget,kde,plasma,monitoring</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="">
+  <name>Event Calendar</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>Zren</author>
+  <homepage>https://store.kde.org/p/998901</homepage>
+  <licence></licence>
+  <version>63</version>
+  <rating>88</rating>
+  <downloads>13578</downloads>
+  <installedfile>/tmp/eventcalendar-v63-plasma5.6.plasmoid</installedfile>
+  <id>998901</id>
+  <releasedate>2019-05-17</releasedate>
+  <summary>&lt;strong>Notice&lt;/strong> Weather is currently unavailable.&lt;br />
+&lt;a href="https://github.com/Zren/plasma-applet-eventcalendar/issues" target="_blank" rel="nofollow">https://github.com/Zren/plasma-applet-eventcalendar/issues&lt;/a>&lt;br />
+&lt;br />
+&lt;strong>v48+ require Plasma 5.6 (Kubuntu 16.10 and...</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/1/a/f/f/687cb198fde24cf7a0066443903d69a89325.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/1/a/f/f/687cb198fde24cf7a0066443903d69a89325.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1558144358/s/173fb3d4c8ec92fe32db504ea87d2f3e/t/1561762263/o/1/eventcalendar-v63-plasma5.6.plasmoid</payload>
+  <tags>gplv2-later,linux,unix,extension,plasma##majorversion=5,widget,kde,plasma,calendar</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="">
+  <name>Thermal Monitor</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>clearmartin</author>
+  <homepage>https://store.kde.org/p/998915</homepage>
+  <licence></licence>
+  <version>1.2.8</version>
+  <rating>84</rating>
+  <downloads>94632</downloads>
+  <installedfile>/tmp/plasma-applet-thermal-monitor.plasmoid</installedfile>
+  <id>998915</id>
+  <releasedate>2017-09-08</releasedate>
+  <summary>Shows temperature of various available sensors including CPU, GPU (lmsensors and nvidia-smi if appliable) and HDD (using udisks2 d-bus backend).&lt;br />
+&lt;br />
+It can also show group of temperatures in one - the highest of them.&lt;br />
+&lt;br />
+REQUIRED DEPENDENCIES&lt;br />
+- qt5-graphicaleffects&lt;br />
+- e.g. package for kubuntu users: libqt5qml-graphicaleffects&lt;br />
+&lt;br />
+HOW TO INSTALL&lt;br />
+- Add Widgets... -&amp;gt; Get new widgets -&amp;gt; Download new plasma widgets&lt;br />
+- find this applet and install through the first item with .plasmoid extension</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img//hive/content-pre1/170354-1.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img//hive/content-pre1/170354-1.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1503273190/s/b78dd8c3940833fc0f05565103050999/t/1562177730/o/1/plasma-applet-thermal-monitor.plasmoid</payload>
+  <tags>linux,unix,extension,plasma##majorversion=5,widget,kde,plasma,monitoring</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="">
+  <name>Redshift Control</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>clearmartin</author>
+  <homepage>https://store.kde.org/p/998916</homepage>
+  <licence></licence>
+  <version>1.0.18</version>
+  <rating>87</rating>
+  <downloads>61100</downloads>
+  <installedfile>/tmp/plasma-applet-redshift-control.plasmoid</installedfile>
+  <id>998916</id>
+  <releasedate>2017-08-06</releasedate>
+  <summary>Plasma 5 applet. Allows enabling and disabling redshift process. Provides advanced redshift settings and mouse-wheel manual screen temperature controlling.&lt;br />
+&lt;br />
+REQUIRED DEPENDENCIES&lt;br />
+- redshift&lt;br />
+- qt5-graphicaleffects (e.g. package for kubuntu users:...</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img//hive/content-pre1/170746-1.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img//hive/content-pre1/170746-1.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1486934610/s/e1962e661787ff1c8c27e8158075b453/t/1561762343/o/1/plasma-applet-redshift-control.plasmoid</payload>
+  <tags>linux,unix,extension,plasma##majorversion=5,widget,kde,plasma</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="">
+  <name>Plasma Keyboard Indicator</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>apol</author>
+  <homepage>https://store.kde.org/p/1217159</homepage>
+  <licence></licence>
+  <version>1.0</version>
+  <rating>67</rating>
+  <downloads>5510</downloads>
+  <installedfile>/tmp/org.kde.plasma.keyboardindicator.tar.bz2</installedfile>
+  <id>1217159</id>
+  <releasedate>2018-03-04</releasedate>
+  <summary>Small Plasmoid to display the Num Lock and Caps lock status.&lt;br />
+&lt;br />
+Will be part of Plasma 5.13, contributions are very welcome.&lt;br />
+https://cgit.kde.org/kdeplasma-addons.git/tree/applets/keyboardindicator</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/e/3/f/e/c11108481226df82d693978def478dd03fef.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/e/3/f/e/c11108481226df82d693978def478dd03fef.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1520222349/s/673bcec442ef3d074810c4197abc6a87/t/1561762606/o/1/org.kde.plasma.keyboardindicator.tar.bz2</payload>
+  <tags>linux,unix,extension,plasma##majorversion=5,widget,kde,plasma,gplv2-later</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="">
+  <name>Resources Monitor</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>clearmartin</author>
+  <homepage>https://store.kde.org/p/998908</homepage>
+  <licence></licence>
+  <version>1.0.5</version>
+  <rating>82</rating>
+  <downloads>61706</downloads>
+  <installedfile>/tmp/170120-package.zip</installedfile>
+  <id>998908</id>
+  <releasedate>2015-11-15</releasedate>
+  <summary>Plasma 5 plasmoid for monitoring CPU, frequency, RAM and swap activity.&lt;br />
+&lt;br />
+REQUIRED DEPENDENCIES&lt;br />
+- qt5-graphicaleffects&lt;br />
+- e.g. package for kubuntu users: libqt5qml-graphicaleffects&lt;br />
+&lt;br />
+HOW TO INSTALL&lt;br />
+- Add Widgets... -&amp;gt; Get new widgets -&amp;gt; Download new...</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img//hive/content-pre1/170120-1.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img//hive/content-pre1/170120-1.png</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/download/id/1464642024/s/c65c6edbb39a8d5518db4d496881c39c/t/1561762292/o/1/170120-package.zip</payload>
+  <tags>linux,unix,extension,plasma##majorversion=5,widget,kde,plasma,monitoring</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>
