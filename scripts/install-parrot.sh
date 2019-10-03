@@ -106,8 +106,8 @@ echo "###### i3 GAPS ######"
 #~/scripts/install-inithome.sh ssh-key repository $(date +'%D')
 
 echo "###### CLEANUP ######"
-sudo apt autoremove
-sudo apt autoclean
+sudo apt autoremove -y
+sudo apt autoclean -y
 
 echo "###### TODO MANUAL INSTALLATION ######"
 printf "
