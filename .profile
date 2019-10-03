@@ -23,6 +23,10 @@ if [ -d "$HOME/.local/bin" ] ; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/scripts" ] ; then
+	PATH="$HOME/scripts:$PATH"
+fi
+
 #Change first day of week to Monday
 export LC_TIME=en_US.UTF-8
 #Change to metric system
@@ -30,7 +34,7 @@ export LC_MEASUREMENT=en_US.UTF-8
 
 #umask 022
 
-export GIT_AUTHOR_NAME="Karel Křemel"
+export GIT_AUTHOR_NAME="username"
 export SSH_ASKPASS="/usr/bin/ssh-askpass"
 eval 'ssh-agent -s' >/dev/null
 
@@ -54,3 +58,4 @@ fi
 
 if [ -f "/home/$(whoami)/scripts/apt-daily.sh" ]; then ~/scripts/apt-daily.sh; fi
 
+export GPG_TTY=$(tty)

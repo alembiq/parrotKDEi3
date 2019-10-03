@@ -8,9 +8,7 @@ alias free='free -h'
 alias du='du -h'
 alias ping='ping -D'
 alias disableIPv6='sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1'
-
-alias iduna-update-ttrss='ssh iduna "(cd /srv/net.alembiq.reader/tt-rss/ ; git pull)"'
-alias tyr-mutt='sudo mutt -f /var/mail/mail'
+alias muttscratchpad='konsole -p tabtitle='neomuttScratchpad' -e neomutt &'
 
 if [ -f /usr/bin/docker ]; then
 	alias docker-cleanup='echo "cleaning sys images"; docker system prune -a -f; echo "cleaning volumes"; docker volume prune -f' 

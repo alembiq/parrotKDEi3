@@ -15,10 +15,9 @@ HISTSIZE=40000
 HISTFILESIZE=80000
 
 prompt_k8s(){
-  k8s_current_context=$(kubectl config current-context 2> /dev/null)
-  if [[ $? -eq 0 ]] ; then echo -e " [k8s ${k8s_current_context}] "; fi
+	k8s_current_context=$(kubectl config current-context 2> /dev/null)
+	if [[ $? -eq 0 ]] ; then echo -e " [k8s ${k8s_current_context}] "; fi
 }
-
 shopt -s checkwinsize
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -28,9 +27,6 @@ case "$TERM" in
 esac
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
     else
 	color_prompt=
@@ -88,19 +84,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-#if [ -f ~/.git-completion.bash ]; then
-#. ~/.git-completion.bash
-#__git_complete g __git_main
-#__git_complete gc _git_checkout
-#__git_complete gm __git_merge
-#__git_complete gp _git_pull
-#fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
@@ -114,7 +97,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-#if [ -f ~/.profile ]; then
-#	~/.profile
-#fi
+if [ -f ./usr/bin/kubectl ]; then
+	source <(kubectl completion bash)
+fi

@@ -7,3 +7,5 @@ wget https://raw.githubusercontent.com/alembiq/parrotKDEi3/master/scripts/instal
 chmod u+x install-parrot.sh
 ./install-parrot.sh
 ```
+
+3.10.2019 updated to Parrot 4.7 KDE
