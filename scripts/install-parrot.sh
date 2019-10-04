@@ -50,7 +50,7 @@ sudo apt install -y \
 	git etckeeper rofi compton tree aptitude mc dirmngr kde-spectacle krusader krename clamav spotify-client \
 	software-properties-common ntp curl okular kleopatra feh smb4k network-manager-openconnect i3 ranger imagemagick \
 	mariadb-server php7.3-fpm apache2 libapache2-mod-fcgid php-mysql php-mbstring php-xml php-gd \
-	dino-im git papirus-icon-theme grub-customizer neomutt isync msmtp urlview abook notmuch
+	dino-im git papirus-icon-theme grub-customizer
 
 echo "###### GITHUB HOME ######"
 cd ~
@@ -58,12 +58,6 @@ git clone https://github.com/alembiq/parrotKDEi3.git
 rm -rf parrotKDEi3/.git
 cp -nr parrotKDEi3/{,.[^.]}* ~
 rm -rf parrotKDEi3
-
-echo "###### MUTT WIZZARD ######"
-cd /tmp
-git clone https://github.com/LukeSmithxyz/mutt-wizard
-cd mutt-wizard
-sudo make install
 
 echo "###### SERVICES ######"
 sudo systemctl enable php7.3-fpm.service
@@ -101,6 +95,9 @@ sudo update-grub2
 echo "###### i3 GAPS ######"
 ~/scripts/install-i3gaps.sh
 
+echo "###### MUTT ######"
+~/scripts/install-mutt.sh
+
 #echo "###### ALEMBIQ HOME ######"
 #cd ~
 #~/scripts/install-inithome.sh ssh-key repository $(date +'%D')
@@ -115,7 +112,5 @@ scripts/install-inithome.sh key repo branch
 
 sudo gdebi ~/Download/google-chrome-stable_current_amd64.deb
 sudo gdebi ~/Download/skypeforlinux-64.deb
-sudo gdebi ~/Download/mailspring-1.6.1-amd64.deb
 sudo gdebi ~/Download/VNC-Viewer-6.19.325-Linux-x64.deb
-sudo gdebi ~/Download/slack-desktop-3.4.2-amd64.deb
 \nassign /etc repo to GITserver\n"
