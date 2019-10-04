@@ -49,8 +49,7 @@ sudo apt update
 sudo apt install -y \
 	git etckeeper rofi compton tree aptitude mc dirmngr kde-spectacle krusader krename clamav spotify-client \
 	software-properties-common ntp curl okular kleopatra feh smb4k network-manager-openconnect i3 ranger imagemagick \
-	mariadb-server php7.3-fpm apache2 libapache2-mod-fcgid php-mysql php-mbstring php-xml php-gd \
-	dino-im git papirus-icon-theme grub-customizer
+	dino-im papirus-icon-theme grub-customizer
 
 echo "###### GITHUB HOME ######"
 cd ~
@@ -60,15 +59,10 @@ cp -nr parrotKDEi3/{,.[^.]}* ~
 rm -rf parrotKDEi3
 
 echo "###### SERVICES ######"
-sudo systemctl enable php7.3-fpm.service
-sudo systemctl enable mariadb.service
-sudo systemctl enable apache2.service
 sudo systemctl enable clamav-freshclam.service
 sudo systemctl enable bluetooth.service
 sudo systemctl enable ntp
 sudo systemctl enable cups.service
-sudo a2enconf php7.3-fpm
-sudo a2enmod proxy_fcgi setenvif expires headers rewrite
 
 echo "###### CONFIGURATION ######"
 sudo mkdir -p /etc/X11/xorg.conf.d/
@@ -93,10 +87,25 @@ sudo sed -i 's/\(GRUB_CMDLINE_LINUX="\)/\1systemd.show_status=1 /' /etc/default/
 sudo update-grub2
 
 echo "###### i3 GAPS ######"
-~/scripts/install-i3gaps.sh
+read -p "Install i3-gaps? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	~/scripts/install-i3gaps.sh
+fi
 
 echo "###### MUTT ######"
-~/scripts/install-mutt.sh
+read -p "Install mutt? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	~/scripts/install-mutt.sh
+fi
+
+echo "###### LAMP server ######"
+read -p "Install LAMP? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+~/scripts/install-lamp.sh
+fi
 
 #echo "###### ALEMBIQ HOME ######"
 #cd ~
