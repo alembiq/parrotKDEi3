@@ -192,11 +192,11 @@ exec --no-startup-id i3-msg 'workspace 1; exec /usr/local/bin/google-chrome'
 
 ### SCRATCHPAD
 for_window [title="konsoleScratchpad"] move scratchpad
-for_window [title="konsoleScratchpad"] floating enable, border pixel 5, resize set 1350 730
+for_window [title="konsoleScratchpad"] floating enable, border pixel 5, resize set 1250 730
 bindsym $Mod+u [title="konsoleScratchpad"] scratchpad show; [title="konsoleScratchpad"] move position center
 exec --no-startup-id konsole -p tabtitle='konsoleScratchpad'
 
 for_window [title="neomuttScratchpad"] move scratchpad
-for_window [title="neomuttScratchpad"] floating enable, border pixel 5, resize set 1350 730
+for_window [title="neomuttScratchpad"] floating enable, border pixel 5, resize set 1250 730
 bindsym $Mod+m [title="neomuttScratchpad"] scratchpad show; [title="neomuttScratchpad"] move position center
 exec --no-startup-id konsole -p tabtitle='neomuttScratchpad' -e neomutt
