@@ -13,3 +13,8 @@ sudo systemctl enable apache2.service
 sudo a2enconf php7.3-fpm
 sudo a2enmod proxy_fcgi setenvif expires headers rewrite
 
+read -p "Configure MariaDB for root webaccess? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+~/scripts/configure-mariadb.sh
+fi
