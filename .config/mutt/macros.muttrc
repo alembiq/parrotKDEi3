@@ -1,0 +1,14 @@
+# vim: filetype=neomuttrc
+
+macro index,pager a "|abook --add-email\n" 'add sender to abook'
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+macro index O "<shell-escape>mailsync -Va<enter>" "run offlineimap to sync all mail"
+macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search -->
+macro index A "<limit>all\n" "show all messages (undo limit)"
+macro pager \cb <pipe-entry>'urlview'<enter> 'list links'
+macro compose Y \
+"<enter-command>set pipe_decode<enter>\
+<pipe-message>pandoc -f gfm -t plain -o /tmp/msg.txt<enter>\
+<pipe-message>pandoc -s -f gfm -t html5 -o /tmp/msg.html<enter>\
+<enter-command>unset pipe_decode<enter>a^U/tmp/msg.txt\n^Da^U/tmp/msg.html\n^D^T^Utext/html; charset=utf-8\n=DTT&d^U\n" \
+"Convert markdown gfm to HTML and plain" 

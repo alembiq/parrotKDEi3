@@ -10,6 +10,11 @@ sudo make install
 
 mkdir -p ~/.local/share/mail
 
+crontab -l ~/crontab
+echo "*/5 * * * *             mbsync -aC >/dev/null 2>&1" >>~/crontab
+crontab ~/crontab
+rm ~/crontab
+
 printf "\n\n###### TODO MANUALY ###### \n
 restore configuration:
 ~/.mbsync
