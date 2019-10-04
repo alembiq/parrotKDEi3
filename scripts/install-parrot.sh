@@ -90,26 +90,26 @@ echo "###### i3 GAPS ######"
 read -p "Install i3-gaps? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	~/scripts/install-i3gaps.sh
+	$DIR/install-i3gaps.sh
 fi
 
 echo "###### MUTT ######"
 read -p "Install mutt? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	~/scripts/install-mutt.sh
+	$DIR/install-mutt.sh
 fi
 
 echo "###### LAMP server ######"
 read -p "Install LAMP? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-~/scripts/install-lamp.sh
+	$DIR/install-lamp.sh
 fi
 
 #echo "###### ALEMBIQ HOME ######"
 #cd ~
-#~/scripts/install-inithome.sh ssh-key repository $(date +'%D')
+#$DIR/install-inithome.sh ssh-key repository $(date +'%D')
 
 echo "###### CLEANUP ######"
 sudo apt autoremove -y
@@ -117,7 +117,7 @@ sudo apt autoclean -y
 
 echo "###### TODO MANUAL INSTALLATION ######"
 printf "
-scripts/install-inithome.sh key repo branch
+$DIR/install-inithome.sh key repo branch
 
 sudo gdebi ~/Download/google-chrome-stable_current_amd64.deb
 sudo gdebi ~/Download/skypeforlinux-64.deb
