@@ -1,9 +1,0 @@
-[Added Associations]
-inode/directory=kfmclient_dir.desktop;chirp.desktop;
-
-[Default Applications]
-inode/directory=kfmclient_dir.desktop;
-x-scheme-handler/http=google-chrome.desktop;
-x-scheme-handler/https=google-chrome.desktop;
-x-scheme-handler/mailto=thunderbird.desktop;
-x-scheme-handler/slack=Slack.desktop

@@ -65,15 +65,29 @@ sudo systemctl enable ntp
 sudo systemctl enable cups.service
 
 echo "###### CONFIGURATION ######"
-sudo mkdir -p /etc/X11/xorg.conf.d/
-printf 'Section "Device"\nIdentifier "Intel Graphics"\nDriver "intel"\nOption "TearFree" "true"\nEndSection' \
-  |sudo tee /etc/X11/xorg.conf.d/20-intel.conf 
-echo "blacklist hid_multitouch"  | sudo tee -a /etc/modprobe.d/hid_multitouch.conf
+read -p "Intel graphics? y/n " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	sudo mkdir -p /etc/X11/xorg.conf.d/
+	printf 'Section "Device"\nIdentifier "Intel Graphics"\nDriver "intel"\nOption "TearFree" "true"\nEndSection' \
+	  |sudo tee /etc/X11/xorg.conf.d/20-intel.conf 
+fi
+
+read -p "Disable touchscreen y/n? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	echo "blacklist hid_multitouch"  | sudo tee -a /etc/modprobe.d/hid_multitouch.conf
+fi
 mkdir -p ~/.config/plasma-workspace/env
 printf "export KDEWM=/usr/bin/i3\ncompton & --config ~/.config/compton/compton.conf\n" | \
 	tee  ~/.config/plasma-workspace/env/wm.sh
 chmod 755 ~/.config/plasma-workspace/env/wm.sh
 sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
+
+crontab -l ~/crontab
+echo "*/10 * * * *            DISPLAY=:0 $HOME/scripts/feh-rotate.sh >/dev/null 2>&1" >>~/crontab
+crontab ~/crontab
+rm ~/crontab
 
 sudo mkdir /etc/systemd/system/getty@tty1.service.d/
 printf "[Service]\nTTYDisallocate=no" \
@@ -87,21 +101,21 @@ sudo sed -i 's/\(GRUB_CMDLINE_LINUX="\)/\1systemd.show_status=1 /' /etc/default/
 sudo update-grub2
 
 echo "###### i3 GAPS ######"
-read -p "Install i3-gaps? " -n 1 -r
+read -p "Install i3-gaps? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	$DIR/install-i3gaps.sh
 fi
 
 echo "###### MUTT ######"
-read -p "Install mutt? " -n 1 -r
+read -p "Install mutt? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	$DIR/install-mutt.sh
 fi
 
 echo "###### LAMP server ######"
-read -p "Install LAMP? " -n 1 -r
+read -p "Install LAMP? y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	$DIR/install-lamp.sh
