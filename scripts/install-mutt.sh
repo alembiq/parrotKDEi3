@@ -10,8 +10,9 @@ sudo make install
 
 mkdir -p ~/.local/share/mail
 
-crontab -l ~/crontab
-echo "*/5 * * * *             mbsync -aC >/dev/null 2>&1" >>~/crontab
+crontab -l > ~/crontab
+#echo "*/5 * * * *             mbsync -aC >/dev/null 2>&1" >>~/crontab
+echo "*/5 * * * *             ~/scripts/mail-sync.sh 2>&1" >>~/crontab
 crontab ~/crontab
 rm ~/crontab
 
@@ -21,5 +22,4 @@ restore configuration:
 ~/.msmtprc -> ~/.config/msmtp/config
 ~/.notmuch-config
 ~/.password-store\n
-recreate folders for mailboxes: ~/.local/share/mail/$account\n
-run: mbsync -Ca\n"
+recreate folders for mailboxes: ~/.local/share/mail/$account\n"

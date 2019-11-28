@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 ### local hostname
 if [ ! "$1" ]; then 
-	echo "missing parametr local hostname"
+echo "missing parameters: $0 hostname"
 	exit
 fi
+
+echo "###### PASSWORDLESS SUDO ######"
+su -c "echo '$(whoami) ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers.d/passwordless"
 
 
 echo $1 | sudo tee /etc/hostname
@@ -21,10 +24,6 @@ sudo dpkg --configure -a
 echo "###### LOCALES ######"
 sudo sed -i "s/# \+\(cs_CZ.UTF-8\)/\1/" /etc/locale.gen
 sudo locale-gen
-
-echo "###### PASSWORDLESS SUDO ######"
-echo "$(whoami) ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/passwordless
-sudo chmod 440 /etc/sudoers.d/passwordless
 
 echo "###### REPOSITORIES ######"
 #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A8AA1FAA3F055C03 #grub-customizer
@@ -48,8 +47,8 @@ echo "###### INSTALL ######"
 sudo apt update
 sudo apt install -y \
 	git etckeeper rofi compton tree aptitude mc dirmngr kde-spectacle krusader krename clamav spotify-client \
-	software-properties-common ntp curl okular kleopatra feh smb4k network-manager-openconnect i3 ranger imagemagick \
-	dino-im papirus-icon-theme grub-customizer
+	software-properties-common ntp curl okular kleopatra feh smb4k network-manager-openconnect i3 ranger \ 
+	spectable imagemagick iftop dino-im papirus-icon-theme grub-customizer
 
 echo "###### GITHUB HOME ######"
 cd ~
@@ -84,7 +83,7 @@ printf "export KDEWM=/usr/bin/i3\ncompton & --config ~/.config/compton/compton.c
 chmod 755 ~/.config/plasma-workspace/env/wm.sh
 sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 
-crontab -l ~/crontab
+crontab -l > ~/crontab
 echo "*/10 * * * *            DISPLAY=:0 $HOME/scripts/feh-rotate.sh >/dev/null 2>&1" >>~/crontab
 crontab ~/crontab
 rm ~/crontab
@@ -92,7 +91,7 @@ rm ~/crontab
 sudo mkdir /etc/systemd/system/getty@tty1.service.d/
 printf "[Service]\nTTYDisallocate=no" \
 	| sudo tee /etc/systemd/system/getty@tty1.service.d/noclear.conf
-printf "[Service]\nExecStart=\nExecStart=-/usr/bin/tail -f /var/log/messages /var/logsyslog\nStandardInput=tty\nStandardOutput=tty" \
+printf "[Service]\nExecStart=\nExecStart=-/usr/bin/tail -f /var/log/messages /var/log/syslog\nStandardInput=tty\nStandardOutput=tty" \
 	| sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
 sudo systemctl daemon-reload
 sudo systemctl restart getty@tty1.service

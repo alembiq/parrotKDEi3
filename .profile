@@ -34,22 +34,19 @@ export LC_MEASUREMENT=en_US.UTF-8
 
 #umask 022
 
-export GIT_AUTHOR_NAME="username"
+export GIT_AUTHOR_NAME="Karel Křemel"
 export SSH_ASKPASS="/usr/bin/ssh-askpass"
 eval 'ssh-agent -s' >/dev/null
 
 printf "# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #"
 hostname | figlet -f slant -c -w 103
-if [ -f "/etc/motd" ]; then cat /etc/motd ; fi
-if [ -f "~/.motd" ]; then cat ~/.motd ; fi
+#if [ -f "/etc/motd" ]; then pandoc -s -f markdown /etc/motd -t plain ; fi
+if [ -f "~/.motd" ]; then pandoc -s -f markdown ~/.motd -t plain ; fi
 printf "\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n\n"
 
 ssh-add -L
 free 
 df 
-if [ -f "/usr/bin/kubectl" ]; then
-	kubectl get pod
-fi
 if [ -f "/usr/bin/docker" ]; then 
         for i in $(docker ps -a --format "{{.ID}} {{.Names}}" | grep -v k8s | awk '{print $1;}'); do 
                 TMP2=$(docker inspect $i  --format '{{ .NetworkSettings.Networks.shared_outside.IPAddress}}'); echo -en $TMP2\\t; 

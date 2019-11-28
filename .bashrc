@@ -16,7 +16,7 @@ HISTFILESIZE=80000
 
 prompt_k8s(){
 	k8s_current_context=$(kubectl config current-context 2> /dev/null)
-	if [[ $? -eq 0 ]] ; then echo -e " [k8s ${k8s_current_context}] "; fi
+	if [[ $? -eq 0 ]] ; then echo -e " [k8s ${k8s_current_context}]"; fi
 }
 shopt -s checkwinsize
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
