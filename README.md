@@ -1,4 +1,4 @@
-## [Parrot OS + KDE + i3 installation &amp; configuration=(https://github.com/alembiq/parrotKDEi3)
+## [Parrot OS + KDE + i3 installation &amp; configuration](https://github.com/alembiq/parrotKDEi3)
 
 This isn't anything fancy, just my basic "/etc/skel" to be used on [Parrot Linux](https://parrotlinux.org/) 
 with KDE and [i3 tilling manager](https://i3wm.org/). There are also few extra scripts I'm using basically 
