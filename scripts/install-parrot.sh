@@ -26,8 +26,6 @@ sudo sed -i "s/# \+\(cs_CZ.UTF-8\)/\1/" /etc/locale.gen
 sudo locale-gen
 
 echo "###### REPOSITORIES ######"
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A8AA1FAA3F055C03 #grub-customizer
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A87FF9DF48BF1C90 #spotify
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E58A9D36647CAE7F
 
@@ -35,8 +33,6 @@ echo "deb http://ppa.launchpad.net/papirus/papirus/ubuntu bionic main" | \
 	sudo tee /etc/apt/sources.list.d/papirus-ppa.list
 echo "deb http://repository.spotify.com stable non-free" | \
 	sudo tee /etc/apt/sources.list.d/spotify.list
-#echo "deb http://ppa.launchpad.net/danielrichter2007/grub-customizer/ubuntu bionir main" | \
-#	sudo tee /etc/apt/sources.list.d/grub-customizer.list
 
 
 echo "###### PURGE ######"
@@ -119,10 +115,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	$DIR/install-lamp.sh
 fi
-
-#echo "###### ALEMBIQ HOME ######"
-#cd ~
-#$DIR/install-inithome.sh ssh-key repository $(date +'%D')
 
 echo "###### CLEANUP ######"
 sudo apt autoremove -y

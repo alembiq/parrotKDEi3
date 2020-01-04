@@ -14,9 +14,10 @@ ssh $GITOLITE info | awk '/^[ @]*R/{print $NF}' | while read REPO_NAME
 do
 	git clone --mirror $GITOLITE:$REPO_NAME.git
 	REPO__NAME=$(echo $REPO_NAME | sed 's/\./\_/g')
-	curl -v -H "Content-Type:application/json" $GITLAB_URL/api/v4/projects?private_token=$API_TOKEN -d "{ \"name\": \"$REPO__NAME\" }"
+	curl -v -H "Content-Type:application/json" https://$GITLAB_URL/api/v4/projects?private_token=$API_TOKEN -d "{ \"name\": \"$REPO__NAME\" }"
 	cd $REPO_NAME.git
 	git remote add gitlab git@$GITLAB_URL:$GITLAB_USER/$REPO__NAME.git
 	git push -f --tags gitlab refs/heads/*:refs/heads/*
 	cd ..
+	rm -rf $REPO_NAME.git
 done

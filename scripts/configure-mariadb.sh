@@ -2,7 +2,7 @@
 # root access from web
 
 sudo service mariadb restart
-sudo mysql < use mysql; update user set plugin='' where User='root'; \
+echo " use mysql; update user set plugin='' where User='root'; \
 	grant all privileges on *.* to 'root'@'localhost' identified by 'password'; \
-	flush privileges;
+	flush privileges;" | mysql
 sudo service mysql restart

@@ -40,17 +40,16 @@ eval 'ssh-agent -s' >/dev/null
 
 printf "# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #"
 hostname | figlet -f slant -c -w 103
-#if [ -f "/etc/motd" ]; then pandoc -s -f markdown /etc/motd -t plain ; fi
-if [ -f "~/.motd" ]; then pandoc -s -f markdown ~/.motd -t plain ; fi
+if [ -f ".motd" ] ; then if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown ~/.motd -t plain ; else cat ~/.motd ; fi
+else if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown /etc/motd -t plain ; else cat /etc/motd ; fi
+fi
 printf "\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n\n"
 
 ssh-add -L
 free 
 df 
-if [ -f "/usr/bin/docker" ]; then 
-        for i in $(docker ps -a --format "{{.ID}} {{.Names}}" | grep -v k8s | awk '{print $1;}'); do 
-                TMP2=$(docker inspect $i  --format '{{ .NetworkSettings.Networks.shared_outside.IPAddress}}'); echo -en $TMP2\\t; 
-                docker ps --filter id=${i} --format '{{.Status}}\t{{.Names}}\t\t{{.Image}}' ; done
+if [ -f "/usr/bin/docker" ]; then
+	docker ps
 fi
 
 if [ -f "/home/$(whoami)/scripts/apt-daily.sh" ]; then ~/scripts/apt-daily.sh; fi
