@@ -44,7 +44,7 @@ sudo apt update
 sudo apt install -y \
 	git etckeeper rofi compton tree aptitude mc dirmngr kde-spectacle krusader krename clamav spotify-client \
 	software-properties-common ntp curl okular kleopatra feh smb4k network-manager-openconnect i3 ranger \ 
-	spectable imagemagick iftop dino-im papirus-icon-theme grub-customizer
+	spectable imagemagick iftop dino-im papirus-icon-theme grub-customizer qownnotes
 
 echo "###### GITHUB HOME ######"
 cd ~
@@ -96,14 +96,27 @@ sudo sed -i 's/\(GRUB_CMDLINE_LINUX="\)/\1systemd.show_status=1 /' /etc/default/
 sudo update-grub2
 
 echo "###### i3 GAPS ######"
-read -p "Install i3-gaps? y/n " -n 1 -r
+read -p "Install i3-gaps? y/n " -n 1 -r 
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	$DIR/install-i3gaps.sh
 fi
 
+echo "###### EQUALIZER ######"
+read -p "Configure Equalizer for PulseAudio? y/n " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	sudo apt install pavucontrol pulseaudio-equalizer pulseaudio-module-bluetooth
+	echo "load-module module-switch-on-connect" | sudo tee -a /etc/pulse/default.pa
+	echo "load-module module-switch-on-connect ignore_virtual=no" | sudo tee -a /etc/pulse/default.pa
+	echo "load-module module-equalizer-sink" | sudo tee -a /etc/pulse/default.pa
+	echo "load-module module-dbus-protocol" | sudo tee -a /etc/pulse/default.pa
+fi
+
 echo "###### MUTT ######"
 read -p "Install mutt? y/n " -n 1 -r
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	$DIR/install-mutt.sh
@@ -111,6 +124,7 @@ fi
 
 echo "###### LAMP server ######"
 read -p "Install LAMP? y/n " -n 1 -r
+echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	$DIR/install-lamp.sh
