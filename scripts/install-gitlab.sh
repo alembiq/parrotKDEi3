@@ -179,3 +179,22 @@ service nginx restart
 #read -n 1 -s -r -p "Press any key to continue"
 #sudo nano /etc/gitlab/gitlab.rb
 #sudo gitlab-ctl reconfigure
+
+
+
+## runner
+#docker run -d --name gitlab-runner --restart always   -v /srv/gitlab-runner/config:/etc/gitlab-runner   -v /var/run/docker.sock:/var/run/docker.sock   gitlab/gitlab-runner:v12.5.0
+#docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
+#docker run --rm -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
+#  --non-interactive \
+#  --executor "docker" \
+#  --docker-image alpine:latest \
+#  --url "http://pi4/" \
+#  --registration-token "4z66pqxiGTo6wKz2aXUJls" \
+#  --description "docker-runner" \
+#  --tag-list "docker,aws" \
+#  --run-untagged="true" \
+#  --locked="false" \
+#  --access-level="not_protected"
+#docker stop gitlab-runner && docker rm gitlab-runner
+

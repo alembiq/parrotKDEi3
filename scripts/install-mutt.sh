@@ -2,7 +2,7 @@
 echo "###### MUTT ######"
 sudo apt update
 sudo apt install -y \
-	neomutt isync msmtp urlview abook notmuch pandoc pass
+	neomutt isync msmtp urlview abook notmuch-mutt pandoc pass
 cd /tmp
 git clone https://github.com/LukeSmithxyz/mutt-wizard
 cd mutt-wizard
