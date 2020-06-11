@@ -42,9 +42,9 @@ sudo apt purge -y thunderbird geany rhythmbox keepassxc xboard ricochet-im hexch
 echo "###### INSTALL ######"
 sudo apt update
 sudo apt install -y \
-	git etckeeper rofi compton tree aptitude mc dirmngr kde-spectacle krusader krename clamav spotify-client \
-	software-properties-common ntp curl okular kleopatra feh smb4k network-manager-openconnect i3 ranger \ 
-	spectable imagemagick iftop dino-im papirus-icon-theme grub-customizer qownnotes
+	git etckeeper tree aptitude mc dirmngr kde-spectacle krusader krename clamav spotify-client \
+	software-properties-common ntp curl okular kleopatra feh smb4k network-manager-openconnect  ranger \ 
+	imagemagick iftop dino-im papirus-icon-theme grub-customizer qownnotes
 
 echo "###### GITHUB HOME ######"
 cd ~
@@ -73,11 +73,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo "blacklist hid_multitouch"  | sudo tee -a /etc/modprobe.d/hid_multitouch.conf
 fi
-mkdir -p ~/.config/plasma-workspace/env
-printf "export KDEWM=/usr/bin/i3\ncompton & --config ~/.config/compton/compton.conf\n" | \
-	tee  ~/.config/plasma-workspace/env/wm.sh
-chmod 755 ~/.config/plasma-workspace/env/wm.sh
-sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
+#mkdir -p ~/.config/plasma-workspace/env
+#printf "export KDEWM=/usr/bin/i3\ncompton & --config ~/.config/compton/compton.conf\n" | \
+#	tee  ~/.config/plasma-workspace/env/wm.sh
+#chmod 755 ~/.config/plasma-workspace/env/wm.sh
+#sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 
 crontab -l > ~/crontab
 echo "*/10 * * * *            DISPLAY=:0 $HOME/scripts/feh-rotate.sh >/dev/null 2>&1" >>~/crontab
@@ -138,7 +138,6 @@ echo "###### TODO MANUAL INSTALLATION ######"
 printf "
 $DIR/install-inithome.sh key repo branch
 
-sudo gdebi ~/Download/google-chrome-stable_current_amd64.deb
 sudo gdebi ~/Download/skypeforlinux-64.deb
 sudo gdebi ~/Download/VNC-Viewer-6.19.325-Linux-x64.deb
 \nassign /etc repo to GITserver\n"
