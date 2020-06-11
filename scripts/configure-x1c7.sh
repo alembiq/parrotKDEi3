@@ -52,11 +52,18 @@ then
   git clone https://github.com/juhovh/xmm7360_usb.git /tmp/xmm7360_usb
   make
   sudo make install
+  sudo depmod
   sudo modprobe xmm7360_usb
-
-  while read line; do
-    echo "$line" > /dev/ttyACM0
-  done << EOF
+  for i in {1..10}
+  do
+    printf "*"
+    sleep 2s
+  done
+  if [[ -f "/dev/ttyACM0" ]]
+  then
+    while read line; do
+      echo "$line" > /dev/ttyACM0
+    done << EOF
 "at@nvm:fix_cat_fcclock.fcclock_mode?"
 "at@nvm:fix_cat_fcclock.fcclock_mode=0"
 "at@store_nvm(fix_cat_fcclock)"
@@ -65,8 +72,10 @@ then
 "AT+CFUN?"
 "AT+CFUN=15"
 EOF
-
-#  sudo screen /dev/ttyACM0
+  elif [[ ! -f "/sys/class/net/wwan0/flags" ]]
+  then
+    echo "modem not found (/dev/ttyACM0, wwan0)"
+  fi
 else
   echo
 fi
