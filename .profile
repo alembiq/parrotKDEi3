@@ -38,7 +38,7 @@ export GIT_AUTHOR_NAME="Karel Křemel"
 export SSH_ASKPASS="/usr/bin/ssh-askpass"
 eval 'ssh-agent -s' >/dev/null
 
-printf "# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #"
+printf "# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"
 hostname | figlet -f slant -c -w 103
 if [ -f ".motd" ] ; then if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown ~/.motd -t plain ; else cat ~/.motd ; fi
 else if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown /etc/motd -t plain ; else cat /etc/motd ; fi
