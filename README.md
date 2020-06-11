@@ -16,4 +16,5 @@ chmod u+x install-parrot.sh
 
 #### Changelog
 
+- 12.6.2020 configurator for Lenovo Thinkpad X1 Carbon 7th generation (no wwan yet)
 - 3.10.2019 updated to Parrot 4.7 KDE

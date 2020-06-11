@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ### ThinkpPad X1 Carbon 7th edition
-
+## missing FingerPrint, disabled touchscreen, 4 speakers (not just two)
 
 read -p "Bigger font for grub y/n?" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -31,6 +31,42 @@ then
   echo "# thinkpad x1 carbon gen 7, needs below for pulseaudio 13
   load-module module-alsa-sink device=hw:0,0 channels=4
   load-module module-alsa-source device=hw:0,6 channels=4" | sudo tee -a /etc/pulse/default.pa
+else
+  echo
+fi
+
+read -p "TearFree video driver y/n " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  sudo mkdir -p /etc/X11/xorg.conf.d/
+  printf 'Section "Device"\nIdentifier "Intel Graphics"\nDriver "intel"\nOption "TearFree" "true"\nEndSection' \
+    |sudo tee /etc/X11/xorg.conf.d/20-intel.conf
+else
+  echo
+fi
+
+read -p "activate LTE modem (Fibocom L850-GL) y/n " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  # https://github.com/juhovh/xmm7360_usb
+  git clone https://github.com/juhovh/xmm7360_usb.git /tmp/xmm7360_usb
+  make
+  sudo make install
+  sudo modprobe xmm7360_usb
+
+  while read line; do
+    echo "$line" > /dev/ttyACM0
+  done << EOF
+"at@nvm:fix_cat_fcclock.fcclock_mode?"
+"at@nvm:fix_cat_fcclock.fcclock_mode=0"
+"at@store_nvm(fix_cat_fcclock)"
+"AT+GTUSBMODE?"
+"AT+GTUSBMODE=7"
+"AT+CFUN?"
+"AT+CFUN=15"
+EOF
+
+#  sudo screen /dev/ttyACM0
 else
   echo
 fi
