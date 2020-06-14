@@ -1,6 +1,7 @@
 [core]
   packedGitLimit = 64m
   packedGitWindowSize = 64m
+	pager = less
 
 [pack]
   deltaCacheSize = 64m
@@ -10,3 +11,7 @@
 [http]
   postbuffer = 5m
 
+[commit]
+	gpgsign = true
+[color]
+	ui = true

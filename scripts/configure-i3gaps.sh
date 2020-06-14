@@ -13,3 +13,8 @@ if [[ -f "/usr/bin/ksplashqml" ]]
   then
   sudo mv /usr/bin/ksplashqml /usr/bin/ksplashqml.old
 fi
+
+crontab -l > ~/crontab
+echo "*/10 * * * *            DISPLAY=:0 $HOME/scripts/feh-rotate.sh >/dev/null 2>&1" >>~/crontab
+crontab ~/crontab
+rm ~/crontab

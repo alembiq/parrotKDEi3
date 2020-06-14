@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ### ThinkpPad X1 Carbon 7th edition
-## missing FingerPrint, disabled touchscreen, 4 speakers (not just two)
+## missing FingerPrint, 4 speakers (currently all channel stereo)
 
 read -p "Bigger font for grub y/n?" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -31,6 +31,11 @@ then
   echo "# thinkpad x1 carbon gen 7, needs below for pulseaudio 13
   load-module module-alsa-sink device=hw:0,0 channels=4
   load-module module-alsa-source device=hw:0,6 channels=4" | sudo tee -a /etc/pulse/default.pa
+  sudo apt install pavucontrol pulseaudio-equalizer pulseaudio-module-bluetooth
+  echo "load-module module-switch-on-connect" | sudo tee -a /etc/pulse/default.pa
+  echo "load-module module-switch-on-connect ignore_virtual=no" | sudo tee -a /etc/pulse/defau>
+  echo "load-module module-equalizer-sink" | sudo tee -a /etc/pulse/default.pa
+  echo "load-module module-dbus-protocol" | sudo tee -a /etc/pulse/default.pa
 else
   echo
 fi
@@ -45,6 +50,14 @@ else
   echo
 fi
 
+read -p "Disable touchscreen y/n? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+ echo "blacklist usbhid"  | sudo tee -a /etc/modprobe.d/hid_multitouch.conf
+else
+  echo
+fi
+
 read -p "activate LTE modem (Fibocom L850-GL) y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -52,11 +65,18 @@ then
   git clone https://github.com/juhovh/xmm7360_usb.git /tmp/xmm7360_usb
   make
   sudo make install
+  sudo depmod
   sudo modprobe xmm7360_usb
-
-  while read line; do
-    echo "$line" > /dev/ttyACM0
-  done << EOF
+  for i in {1..10}
+  do
+    printf "*"
+    sleep 2s
+  done
+  if [[ -f "/dev/ttyACM0" ]]
+  then
+    while read line; do
+      echo "$line" > /dev/ttyACM0
+    done << EOF
 "at@nvm:fix_cat_fcclock.fcclock_mode?"
 "at@nvm:fix_cat_fcclock.fcclock_mode=0"
 "at@store_nvm(fix_cat_fcclock)"
@@ -65,8 +85,10 @@ then
 "AT+CFUN?"
 "AT+CFUN=15"
 EOF
-
-#  sudo screen /dev/ttyACM0
+  elif [[ ! -f "/sys/class/net/wwan0/flags" ]]
+  then
+    echo "modem not found (/dev/ttyACM0, wwan0)"
+  fi
 else
   echo
 fi

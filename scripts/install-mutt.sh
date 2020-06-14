@@ -2,7 +2,7 @@
 echo "###### MUTT ######"
 sudo apt update
 sudo apt install -y \
-	mutt isync msmtp urlview abook notmuch-mutt pandoc pass
+	neomutt isync msmtp urlview abook notmuch-mutt pandoc pass
 cd /tmp
 git clone https://github.com/LukeSmithxyz/mutt-wizard
 cd mutt-wizard
@@ -12,7 +12,7 @@ mkdir -p ~/.local/share/mail
 
 crontab -l > ~/crontab
 #echo "*/5 * * * *             mbsync -aC >/dev/null 2>&1" >>~/crontab
-echo "*/5 * * * *             ~/scripts/mail-sync.sh 2>&1" >>~/crontab
+echo "*/5 * * * *             ~/scripts/mail-sync.sh >/dev/null 2>&1" >>~/crontab
 crontab ~/crontab
 rm ~/crontab
 
@@ -23,3 +23,4 @@ restore configuration:
 ~/.notmuch-config
 ~/.password-store\n
 recreate folders for mailboxes: ~/.local/share/mail/$account\n"
+cat ~/.config/msmtp/config | grep account

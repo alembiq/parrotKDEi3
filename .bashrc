@@ -11,8 +11,7 @@ fi
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
-HISTSIZE=40000
-HISTFILESIZE=80000
+HISTSIZE= HISTFILESIZE=
 
 prompt_k8s(){
 	k8s_current_context=$(kubectl config current-context 2> /dev/null)
@@ -32,14 +31,10 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-if [ "$color_prompt" = yes ]; then
-	if [[ ${EUID} == 0 ]] ; then #root
-		export        PS1='${debian_chroot:+($debian_chroot)}'${PROMPT_datetime}' \[\033[01;31m\]\h\[\033[00m\] '${PROMPT_path}'\[\033[00m\]$(__git_ps1)\[\033[00m\] '${PROMPT_sign}' '
-	else # user
-		export        PS1='${debian_chroot:+($debian_chroot)}'${PROMPT_datetime}' \[\033[01;32m\]\u@\h\[\033[00m\] '${PROMPT_path}'\[\033[00m\]$(__git_ps1)\[\033[00m\] '${PROMPT_sign}' '
-	fi
-else
-    PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
+if [[ ${EUID} == 0 ]] ; then #root
+	export        PS1='${debian_chroot:+($debian_chroot)}'${PROMPT_datetime}' \[\033[01;31m\]\h\[\033[00m\] '${PROMPT_path}'\[\033[00m\]$(__git_ps1)\[\033[00m\] '${PROMPT_sign}' '
+else # user
+	export        PS1='${debian_chroot:+($debian_chroot)}'${PROMPT_datetime}' \[\033[01;32m\]\u@\h\[\033[00m\] '${PROMPT_path}'\[\033[00m\]$(__git_ps1)\[\033[00m\] '${PROMPT_sign}' '
 fi
 if [ "$color_prompt" = yes ]; then
 	man() {
@@ -67,7 +62,6 @@ xterm*|rxvt*)
                 else # user
                         export        PS1='${debian_chroot:+($debian_chroot)}'${PROMPT_datetime}' \[\033[01;32m\]\u@\h\[\033[00m\] '${PROMPT_path}'\[\033[33m\]$(__git_ps1)\[\033[00m\]$(prompt_k8s) '${PROMPT_sign}' '
                 fi
-#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h \w\a\]$PS1"
     ;;
 *)
     ;;

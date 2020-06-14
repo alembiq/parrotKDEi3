@@ -6,6 +6,7 @@
 
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
+#umask 022
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -16,42 +17,46 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-   	PATH="$HOME/bin:$PATH"
-fi
-if [ -d "$HOME/.local/bin" ] ; then
-	PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/script" ] ; then
+    PATH="$HOME/script:$PATH"
 fi
 
-if [ -d "$HOME/scripts" ] ; then
-	PATH="$HOME/scripts:$PATH"
-fi
 
 #Change first day of week to Monday
 export LC_TIME=en_US.UTF-8
 #Change to metric system
 export LC_MEASUREMENT=en_US.UTF-8
-
-#umask 022
-
+export GPG_TTY=$(tty)
 export GIT_AUTHOR_NAME="Karel Křemel"
 export SSH_ASKPASS="/usr/bin/ssh-askpass"
 eval 'ssh-agent -s' >/dev/null
+width=$(tput cols)
 
-printf "# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"
-hostname | figlet -f slant -c -w 103
-if [ -f ".motd" ] ; then if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown ~/.motd -t plain ; else cat ~/.motd ; fi
-else if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown /etc/motd -t plain ; else cat /etc/motd ; fi
+hashLine() {
+for i in `seq 1 $1`;
+do
+        odd=$(( $i %2 ))
+        if [ $odd = "0" ]
+        then
+                echo -n "#";
+        else
+                echo -n " ";
+        fi
+done
+}
+
+hashLine $width
+hostname | figlet -f slant -c -w $width 
+if [ -f ".motd" ] ; then if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown ~/.motd -t plain ; else cat ~/.motd ; fi 
+else if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown /etc/motd -t plain ; else cat /etc/motd ; fi 
 fi
-printf "\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n\n"
+hashLine $width
 
 ssh-add -L
-free 
-df 
-if [ -f "/usr/bin/docker" ]; then
-	docker ps
-fi
+uptime
+free -h
+df -h | grep -v "tmpfs\|udev"
+apt-daily.sh
 
-if [ -f "/home/$(whoami)/scripts/apt-daily.sh" ]; then ~/scripts/apt-daily.sh; fi
 
-export GPG_TTY=$(tty)
+SHELL=/bin/bash exec /bin/bash

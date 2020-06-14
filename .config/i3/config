@@ -184,11 +184,9 @@ for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
 
-exec skypeforlinux
-exec dino-im
-exec slack
-exec spotify
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/local/bin/google-chrome'
+#exec skypeforlinux
+#exec spotify
+#exec --no-startup-id i3-msg 'workspace 1; exec /usr/local/bin/google-chrome'
 
 ### SCRATCHPAD
 for_window [title="konsoleScratchpad"] move scratchpad

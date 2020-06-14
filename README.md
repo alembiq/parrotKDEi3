@@ -16,5 +16,7 @@ chmod u+x install-parrot.sh
 
 #### Changelog
 
+- 14.6.2020 updated for Parrot 4.9 KDE
+- 14.6.2020 installer for spotify, riot.im
 - 12.6.2020 configurator for Lenovo Thinkpad X1 Carbon 7th generation (sound, mic, wwan)
 - 3.10.2019 updated to Parrot 4.7 KDE
