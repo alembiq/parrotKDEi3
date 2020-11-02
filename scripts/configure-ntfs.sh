@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ntfs-3 accessible to user
+# WIP: ntfs-3 accessible to user
 
 sudo addgroup ntfsuser
 sudo chown root:ntfsuser $(which ntfs-3g)

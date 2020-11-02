@@ -2,9 +2,13 @@
 ### ThinkpPad X1 Carbon 7th edition
 ## missing FingerPrint, 4 speakers (currently all channel stereo)
 
+sudo apt update
+sudo apt install -y git
+
 read -p "Bigger font for grub y/n?" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+  echo
   # https://unix.stackexchange.com/questions/31672/can-grub-font-size-be-customised
   sudo grub-mkfont  -s 26 -o /boot/grub/DejaVuSansMono.pf2 /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
   echo "GRUB_FONT=/boot/grub/DejaVuSansMono.pf2" | sudo tee -a  /etc/default/grub
@@ -31,11 +35,6 @@ then
   echo "# thinkpad x1 carbon gen 7, needs below for pulseaudio 13
   load-module module-alsa-sink device=hw:0,0 channels=4
   load-module module-alsa-source device=hw:0,6 channels=4" | sudo tee -a /etc/pulse/default.pa
-  sudo apt install pavucontrol pulseaudio-equalizer pulseaudio-module-bluetooth
-  echo "load-module module-switch-on-connect" | sudo tee -a /etc/pulse/default.pa
-  echo "load-module module-switch-on-connect ignore_virtual=no" | sudo tee -a /etc/pulse/defau>
-  echo "load-module module-equalizer-sink" | sudo tee -a /etc/pulse/default.pa
-  echo "load-module module-dbus-protocol" | sudo tee -a /etc/pulse/default.pa
 else
   echo
 fi
@@ -44,8 +43,9 @@ read -p "TearFree video driver y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   sudo mkdir -p /etc/X11/xorg.conf.d/
-  printf 'Section "Device"\nIdentifier "Intel Graphics"\nDriver "intel"\nOption "TearFree" "true"\nEndSection' \
+  printf 'Section "Device"\nIdentifier "Intel Graphics"\nDriver "intel"\nOption "TearFree" "true"\nOption "DRI" "3"\nEndSection' \
     |sudo tee /etc/X11/xorg.conf.d/20-intel.conf
+  echo
 else
   echo
 fi
@@ -53,7 +53,11 @@ fi
 read -p "Disable touchscreen y/n? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
- echo "blacklist usbhid"  | sudo tee -a /etc/modprobe.d/hid_multitouch.conf
+  echo
+  sudo apt install -y xinput
+  printf '#!/usr/bin/env bash\nxinput set-prop  "Raydium Corporation Raydium Touch System" "Device Enabled" 0' | \
+    tee ~/.config/autostart-scripts/disable-touchscreen.sh
+  chmod +x ~/.config/autostart-scripts/disable-touchscreen.sh
 else
   echo
 fi
@@ -61,8 +65,10 @@ fi
 read -p "activate LTE modem (Fibocom L850-GL) y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+  echo
   # https://github.com/juhovh/xmm7360_usb
   git clone https://github.com/juhovh/xmm7360_usb.git /tmp/xmm7360_usb
+  cd /tmp/xmm7360_usb
   make
   sudo make install
   sudo depmod

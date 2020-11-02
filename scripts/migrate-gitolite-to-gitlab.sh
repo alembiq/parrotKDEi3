@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if [ "$#" -ne 4 ]; then
   echo "missing parameters: $0 git@gitolite.xyz gitlab.xyz gitlabUserToken gitlabUsername" >&2

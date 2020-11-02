@@ -16,6 +16,7 @@ chmod u+x install-parrot.sh
 
 #### Changelog
 
+- 2.11.2020 Plasma i3 as system wide profile, updated for Parrot 4.10 KDE
 - 14.6.2020 updated for Parrot 4.9 KDE
 - 14.6.2020 installer for spotify, riot.im
 - 12.6.2020 configurator for Lenovo Thinkpad X1 Carbon 7th generation (sound, mic, wwan)

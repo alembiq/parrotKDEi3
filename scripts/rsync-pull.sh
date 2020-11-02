@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
 if [ "$#" -ne 4 ]; then
 	echo "RSYNC with ssh-key remote to local"
 	echo "missing parameters: $0 user@remote.server .ssh/key /remote/folder /localfolder" >&2
