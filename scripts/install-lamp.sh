@@ -13,7 +13,7 @@ sudo systemctl enable apache2.service
 sudo a2enconf php7.4-fpm
 sudo a2enmod proxy_fcgi setenvif expires headers rewrite
 
-sudo sed -i 's/www-data/charles/g' /etc/php/7.4/fpm/pool.d/www.conf
+sudo sed -i 's/www-data/$(whoami)/g' /etc/php/7.4/fpm/pool.d/www.conf
 sudo sed -i 's/\/var\/lib\/automysqlbackup/\/home\/backup\/automysqlbackup/' /etc/default/automysqlbackup
 
 sudo service php7.4-fpm restart
