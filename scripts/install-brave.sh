@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 ### Brawe web Browser
 
-sudo apt install -y apt-transport-https curl
+sudo apt -qq -y install apt-transport-https curl
 curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
 echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update
-sudo apt install -y brave-browser
+sudo apt -qq update
+sudo apt -qq -y install brave-browser

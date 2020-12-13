@@ -8,16 +8,14 @@ perfect, it's just good enough for shortening the time I need to install new mac
 ### Install
 
 ```
-wget https://raw.githubusercontent.com/alembiq/parrotKDEi3/master/scripts/install-parrot.sh
-chmod u+x install-parrot.sh
-./install-parrot.sh
+curl -sL https://raw.githubusercontent.com/alembiq/parrotKDEi3/master/scripts/install-parrot.sh | sh
 ```
 
 
 #### Changelog
 
-- 2.11.2020 Plasma i3 as system wide profile, updated for Parrot 4.10 KDE
-- 14.6.2020 updated for Parrot 4.9 KDE
-- 14.6.2020 installer for spotify, riot.im
-- 12.6.2020 configurator for Lenovo Thinkpad X1 Carbon 7th generation (sound, mic, wwan)
-- 3.10.2019 updated to Parrot 4.7 KDE
+- 2.11.2020  Plasma i3 as system wide profile, updated for Parrot 4.10 KDE
+- 14.6.2020  updated for Parrot 4.9 KDE
+- 14.6.2020  installer for spotify, riot.im
+- 12.6.2020  configurator for Lenovo Thinkpad X1 Carbon 7th generation (sound, mic, wwan)
+- 3.10.2019  updated to Parrot 4.7 KDE

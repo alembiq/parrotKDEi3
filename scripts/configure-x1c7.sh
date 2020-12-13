@@ -2,8 +2,8 @@
 ### ThinkpPad X1 Carbon 7th edition
 ## missing FingerPrint, 4 speakers (currently all channel stereo)
 
-sudo apt update
-sudo apt install -y git
+sudo apt -qq update
+sudo apt -qq -y install  git fwupd intel-media-va-driver-non-free
 
 read -p "Bigger font for grub y/n?" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -29,12 +29,14 @@ read -p "Enable audio y/n? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   # https://wiki.debian.org/InstallingDebianOn/Thinkpad/X1%20Carbon%207th%20Gen
+  sudo apt -qq -y install firmware-intel-sound
   sudo mkdir /lib/firmware/intel/sof{,-tplg}
   sudo wget -O /lib/firmware/intel/sof-tplg/sof-hda-generic-4ch.tplg "https://github.com/thesofproject/sof-bin/raw/stable-v1.5/lib/firmware/intel/sof-tplg-v1.5/sof-hda-generic-4ch.tplg"
   sudo wget -O /lib/firmware/intel/sof/sof-cnl.ri "https://github.com/thesofproject/sof-bin/raw/stable-v1.5/lib/firmware/intel/sof/v1.5/intel-signed/sof-cnl-v1.5.ri"
-  echo "# thinkpad x1 carbon gen 7, needs below for pulseaudio 13
-  load-module module-alsa-sink device=hw:0,0 channels=4
-  load-module module-alsa-source device=hw:0,6 channels=4" | sudo tee -a /etc/pulse/default.pa
+  printf '\n# thinkpad x1 carbon gen 7, needs below for pulseaudio 13\n  load-module module-alsa-sink device=hw:0,0 channels=4\n  load-module module-alsa-source device=hw:0,6 channels=4\n' | sudo tee -a /etc/pulse/default.pa
+  sudo amixer sset Master unmute
+  sudo amixer sset Speaker unmute
+  alsamixer
 else
   echo
 fi

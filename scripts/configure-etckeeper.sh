@@ -10,7 +10,7 @@ if [ "$#" -ne 1 ]; then
 fi
 GITLAB=$1
 
-sudo apt install git etckeeper
+sudo apt -qq -y install git etckeeper
 
 sudo ssh-keygen -o -a 100 -t ed25519 -C "$(hostname)-$(date -I)" -f /root/.ssh/$(hostname)-$(date -I)
 
