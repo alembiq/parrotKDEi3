@@ -2,6 +2,7 @@
 
 STATE=`nmcli networking connectivity`
 
+
 if [ $STATE = 'full' ]
 then
     source $HOME/.config/env

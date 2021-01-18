@@ -141,17 +141,7 @@ assign [class="MineTime"] $ws7
 assign [class="Element"] $ws8
 
 # Autostart apps
-exec --no-startup-id "sh -c 'sleep 8; skypeforlinux'"
-exec --no-startup-id "sh -c 'sleep 4; minetime --no-sandbox'"
-exec --no-startup-id "sh -c 'sleep 2; exec brave-browser'"
-exec --no-startup-id "sh -c 'sleep 2; brave'"
-#--no-startup-id "sh -c 'sleep 8; teams'"
-exec --no-startup-id "sh -c 'sleep 8; /usr/bin/element-desktop'"
-exec /opt/Nextcloud-3.0.2-x86_64.appimage
-exec /usr/bin/nextcloud
 exec --no-startup-id "sh -c 'kquitapp5 plasmashell && kstart5 plasmashell'"
-#exec --no-startup-id spotify
-exec --no-startup-id "sh -c 'sleep 4; spotify'"
 
 #transparency 
 #exec --no-startup-id xcompmgr -c
@@ -334,4 +324,5 @@ exec --no-startup-id konsole -p tabtitle='konsoleScratchpad'
 for_window [title="neomuttScratchpad"] move scratchpad
 for_window [title="neomuttScratchpad"] floating enable, border pixel 5, resize set 1250 730
 bindsym $Mod+m [title="neomuttScratchpad"] scratchpad show; [title="neomuttScratchpad"] move position center
-exec --no-startup-id konsole -p tabtitle='neomuttScratchpad' -e $HOME/.config/env ; neomutt
+exec --no-startup-id "konsole --profile Nordic -p tabtitle='neomuttScratchpad' --workdir $HOME/Downloads -e neomutt"
+#$HOME/.config/env && konsole -p tabtitle=neomuttScratchpad --workdir $HOME/Downloads -e neomutt &

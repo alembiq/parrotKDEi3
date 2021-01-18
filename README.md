@@ -14,6 +14,7 @@ curl -sL https://raw.githubusercontent.com/alembiq/parrotKDEi3/master/scripts/in
 
 #### Changelog
 
+- 18.1.2021  .profile > .bash_profile
 - 2.11.2020  Plasma i3 as system wide profile, updated for Parrot 4.10 KDE
 - 14.6.2020  updated for Parrot 4.9 KDE
 - 14.6.2020  installer for spotify, riot.im

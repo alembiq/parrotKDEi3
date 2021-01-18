@@ -13,6 +13,14 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE= HISTFILESIZE=
 
+PROMPT_datetime="\[\033[01;34m\]\D{%d/%m/%Y} \t"
+PROMPT_path="\[\033[01;37m\]\w"
+PROMPT_sign="\[\033[01;34m\]\$\[\033[00m\]"
+
+if [ -f /usr/share/git/completion/git-prompt.sh ] && ! shopt -oq posix; then 
+	. /usr/share/git/completion/git-prompt.sh
+fi
+
 prompt_k8s(){
 	k8s_current_context=$(kubectl config current-context 2> /dev/null)
 	if [[ $? -eq 0 ]] ; then echo -e " [k8s ${k8s_current_context}]"; fi
@@ -31,6 +39,7 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
+
 if [[ ${EUID} == 0 ]] ; then #root
 	export        PS1='${debian_chroot:+($debian_chroot)}'${PROMPT_datetime}' \[\033[01;31m\]\h\[\033[00m\] '${PROMPT_path}'\[\033[00m\]$(__git_ps1)\[\033[00m\] '${PROMPT_sign}' '
 else # user
@@ -54,9 +63,6 @@ unset color_prompt force_color_prompt
 
 case "$TERM" in
 xterm*|rxvt*)
-        PROMPT_datetime="\[\033[01;34m\]\D{%d/%m/%Y} \t"
-        PROMPT_path="\[\033[01;37m\]\w"
-        PROMPT_sign="\[\033[01;34m\]\$\[\033[00m\]"
                if [[ ${EUID} == 0 ]] ; then #root
                         export        PS1='${debian_chroot:+($debian_chroot)}'${PROMPT_datetime}' \[\033[01;31m\]\h\[\033[00m\] '${PROMPT_path}'\[\033[00m\]$(__git_ps1)\[\033[00m\]$(prompt_k8s) '${PROMPT_sign}' '
                 else # user
@@ -66,17 +72,6 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
 
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
@@ -93,4 +88,8 @@ fi
 
 if [ -f ./usr/bin/kubectl ]; then
 	source <(kubectl completion bash)
+fi
+
+if [ -f ~/.config/env ]; then
+	source ~/.config/env
 fi

@@ -44,7 +44,7 @@ function apt-cleanup () {
 
 function install-essentials () {
 	sudo apt -qq -y install git tree aptitude mc dirmngr krename clamav imagemagick iftop \
-	cifs-utils software-properties-common ntp curl okular kleopatra mc fonts-font-awesome
+	cifs-utils software-properties-common ntp curl okular kleopatra mc fonts-font-awesome tig
 }
 
 function bash-config () {
