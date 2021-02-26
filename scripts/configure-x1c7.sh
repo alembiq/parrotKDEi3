@@ -68,6 +68,8 @@ read -p "activate LTE modem (Fibocom L850-GL) y/n " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo
+  # TODO git@github.com:xmm7360/xmm7360-pci.git apt install pip, pip install pyroute2 configureparse, alias
+
   # https://github.com/juhovh/xmm7360_usb
   git clone https://github.com/juhovh/xmm7360_usb.git /tmp/xmm7360_usb
   cd /tmp/xmm7360_usb

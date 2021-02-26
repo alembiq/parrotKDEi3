@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 #TODO fnc pro zapis do konfiguraku; if ( $file | grep $content | wc -l <> $content |wc -l) { sudo -c "echo $content >$file" }
-#TODO fuc pro instalaci balicku; if ( apt list --installed | grep $packages | wc -l <> $packages | wc -l) { sudo apt -qq update && sudo apt -qq -y install $packages }
+#TODO fnc pro instalaci balicku; if ( apt list --installed | grep $packages | wc -l <> $packages | wc -l) { sudo apt -qq update && sudo apt -qq -y install $packages }
+
 SCRIPTS=$(dirname ${BASH_SOURCE[0]})
 function help() {
 	echo "$0 newhostname default installation of everything"

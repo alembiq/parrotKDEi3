@@ -9,8 +9,8 @@ su -c "ssh-keygen -o -a 100 -t ed25519 -C "$(hostname)-$(date -I)" -f /root/.ssh
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 sudo apt update
-sudo apt full-upgrade -y
-sudo apt -y --fix-broken install
+sudo apt full-upgrade -yqq
+sudo apt -yqq --fix-broken install
 sudo dpkg --configure -a
 
 sudo sed -i "s/# \+\(cs_CZ.UTF-8\)/\1/" /etc/locale.gen
@@ -18,9 +18,9 @@ sudo sed -i "s/# \+\(en_US.UTF-8\)/\1/" /etc/locale.gen
 sudo locale-gen
 
 
-sudo apt install -y \
-	git etckeeper tree aptitude mc dirmngr clamav software-properties-common ntp curl \
-	btrfs-progs molly-guard fail2ban vim nftables bash-completion sudo
+sudo apt install -yqq \
+	etckeeper tree aptitude mc dirmngr clamav software-properties-common ntp curl \
+	btrfs-progs molly-guard vim nftables bash-completion sudo
 
 #imagemagick iftop ranger
 

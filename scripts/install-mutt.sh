@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-PACKAGES="neomutt isync msmtp urlview goobook notmuch-mutt pandoc pass w3m pgp"
+PACKAGES="neomutt isync msmtp urlview goobook notmuch-mutt pandoc pass w3m pgp libtext-autoformat-perl libdata-ical-perl"
 
 if [ -f /usr/bin/yay ]; then
 	yay $PACKAGES
 elif [ -f /usr/bin/apt ]; then
 	sudo apt -qq update
 	sudo apt -qq -y install $PACKAGES
+	pip install --user goobook
 fi
 
 cd /tmp
@@ -35,3 +36,6 @@ fi
 
 
 #TODO asi se neodesilaji veci ve fronte z offline
+
+
+

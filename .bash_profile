@@ -29,7 +29,7 @@ export LC_TIME=en_US.UTF-8
 #Change to metric system
 export LC_MEASUREMENT=en_US.UTF-8
 export GPG_TTY=$(tty)
-export GIT_AUTHOR_NAME="Karel Křemel"
+export GIT_AUTHOR_NAME=""
 export SSH_ASKPASS="/usr/bin/ssh-askpass"
 width=$(tput cols)
 
@@ -58,7 +58,7 @@ else if [ -f "/usr/bin/pandoc" ] ; then pandoc -s -f markdown /etc/motd -t plain
 fi
 hashLine $width
 
-if [[ $(pgrep -V | grep 3.3.15 | wc -l) == 0 ]] ; then
+if [[ $(pgrep -V | grep "3.3.15\|pgrep from procps-ng 3.3.12" | wc -l) == 0 ]] ; then
 	PGREP_PARAM=" -r DSR"
 fi
 if ! pgrep -u "$USER" $PGREP_PARAM ssh-agent > /dev/null; then
